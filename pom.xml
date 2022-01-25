@@ -24,6 +24,13 @@
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+            <version>4.9.3</version>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit</artifactId>
             <version>${kotlin.version}</version>
@@ -50,6 +57,11 @@
                     <execution>
                         <id>compile</id>
                         <phase>compile</phase>
+                        <configuration>
+                            <sourceDirs>
+                                <source>target/generated-sources/antlr4</source>
+                            </sourceDirs>
+                        </configuration>
                         <goals>
                             <goal>compile</goal>
                         </goals>
@@ -59,6 +71,21 @@
                         <phase>test-compile</phase>
                         <goals>
                             <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-maven-plugin</artifactId>
+                <version>4.9.3</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <visitor>true</visitor>
+                        </configuration>
+                        <goals>
+                            <goal>antlr4</goal>
                         </goals>
                     </execution>
                 </executions>
