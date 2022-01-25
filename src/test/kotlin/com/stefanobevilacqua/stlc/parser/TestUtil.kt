@@ -20,9 +20,10 @@ data class TestErrorListener(var errors: Int): BaseErrorListener() {
     line: Int,
     charPositionInLine: Int,
     msg: String?,
-    e: RecognitionException?
+    e: RecognitionException
   ) {
     errors++
     super.syntaxError(recognizer, offendingSymbol, line, charPositionInLine, msg, e)
+    throw e
   }
 }
