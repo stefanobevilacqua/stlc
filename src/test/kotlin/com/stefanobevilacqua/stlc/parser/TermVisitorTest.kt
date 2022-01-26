@@ -106,4 +106,13 @@ internal class TermVisitorTest {
 
     assertEquals(input, actual.toString())
   }
+
+  @Test
+  internal fun `invalid term`() {
+    val parser = setup("fun(a: A)")
+
+    parser.term()
+
+    assertEquals(1, errorListener.errors)
+  }
 }

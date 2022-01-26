@@ -19,7 +19,6 @@ internal class TypeVisitorTest {
   }
 
   @Test
-  @Disabled
   internal fun `invalid type`() {
     val parser = setup("A && || B")
 
