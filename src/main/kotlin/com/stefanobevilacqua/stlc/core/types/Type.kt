@@ -15,12 +15,12 @@ data class Function(
   val returnType: Type
 ): Type() {
   override fun toString() = "(${parameterTypes.asString()} -> $returnType)"
+}
 
-  private fun List<Type>.asString(): String {
-    val string = joinToString(", ")
-    return if(this.size > 1) "($string)"
-    else return string
-  }
+fun List<Type>.asString(): String {
+  val string = joinToString(", ")
+  return if(this.size > 1) "($string)"
+  else return string
 }
 
 data class Pair(val left: Type, val right: Type): Type() {
