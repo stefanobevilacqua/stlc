@@ -1,5 +1,6 @@
 package com.stefanobevilacqua.stlc.parser
 
+import com.stefanobevilacqua.stlc.core.types.Type
 import org.antlr.v4.runtime.*
 
 val errorListener = TestErrorListener(0)
@@ -11,6 +12,12 @@ fun setup(input: String): StlcParser {
   parser.removeErrorListeners()
   parser.addErrorListener(errorListener)
   return parser
+}
+
+fun typeCheck(term: String, typeContext: Map<String, Type> = emptyMap() ): Type {
+  val parser = setup(term)
+  val visitor = TermVisitor(TypeVisitor())
+  return visitor.visit(parser.term()).evaluateType(typeContext)
 }
 
 data class TestErrorListener(var errors: Int): BaseErrorListener() {
