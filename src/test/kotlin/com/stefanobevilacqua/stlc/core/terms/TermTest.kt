@@ -2,17 +2,12 @@ package com.stefanobevilacqua.stlc.core.terms
 
 import com.stefanobevilacqua.stlc.core.exceptions.*
 import com.stefanobevilacqua.stlc.core.types.Base
-import com.stefanobevilacqua.stlc.parser.TermVisitor
-import com.stefanobevilacqua.stlc.parser.TypeVisitor
-import com.stefanobevilacqua.stlc.parser.setup
 import com.stefanobevilacqua.stlc.parser.typeCheck
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 internal class TermTest {
-
-  private val visitor = TermVisitor(TypeVisitor())
 
   @Test
   internal fun `variable type evaluation`() {

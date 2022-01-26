@@ -10,6 +10,7 @@ fun setup(input: String): StlcParser {
   val lexer = StlcLexer(stream)
   val parser = StlcParser(CommonTokenStream(lexer))
   parser.removeErrorListeners()
+  errorListener.errors = 0
   parser.addErrorListener(errorListener)
   return parser
 }
